@@ -1,0 +1,2 @@
+class WorkNote < ApplicationRecord
+end
