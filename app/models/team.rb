@@ -3,4 +3,7 @@ class Team < ApplicationRecord
 	has_many :chats
 	has_many :articles
 	belongs_to :user
+
+    attachment :team_image
+
 end
