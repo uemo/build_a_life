@@ -1,0 +1,20 @@
+<h1>Notes#show</h1>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>時間</strong>
+  <%= @note.start_time.strftime("%Y-%m-%d") %>
+</p>
+
+<p>
+  <strong>メモ</strong>
+  <%= @note.note_body %>
+</p>
+
+<p>
+  <%= @note.result %>
+</p>
+
+<%= link_to 'Destroy', note_path(@note), method: :delete %>
+<%= link_to 'Back', user_logs_path(current_user.id) %>

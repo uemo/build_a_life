@@ -1,0 +1,34 @@
+<h1>Logs#index</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>タイトル</th>
+      <th>時間</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @notes.each do |note| %>
+      <tr>
+        <td><%= note.note_body %></td>
+        <td><%= link_to 'Destroy',note_path(note.id), method: :delete, data: { confirm: 'Are you sure?' } %><td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '進捗を記載', new_note_path %>
+
+<%= month_calendar events: @notes do |date, notes| %>
+  <%= date.day %>
+
+  <% notes.each do |note| %>
+    <div>
+      <%= link_to note.result, note %>
+    </div>
+  <% end %>
+<% end %>

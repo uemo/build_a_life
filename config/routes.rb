@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'notes/new'
+  get 'notes/show'
+  get 'logs/index'
+  get 'logs/create'
   devise_for :users
 
   resources :users, except:[:new,:edit] do
