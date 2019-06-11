@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_08_070124) do
+ActiveRecord::Schema.define(version: 2019_06_11_055017) do
 
   create_table "articles", force: :cascade do |t|
     t.integer "team_id"
@@ -62,10 +62,10 @@ ActiveRecord::Schema.define(version: 2019_06_08_070124) do
   end
 
   create_table "tags", force: :cascade do |t|
-    t.integer "tag_id"
     t.string "tag_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "team_id"
   end
 
   create_table "team_tags", force: :cascade do |t|

@@ -1,0 +1,14 @@
+<h1>Tags#index</h1>
+<p>タグの新規登録</p>
+
+<%= form_for (@tag) do |f| %>
+<%= f.text_field :tag_name %>
+<%= f.submit "新規登録", class: 'btn btn-success w-100' %>
+<% end %>
+
+<p>タグ一覧</p>
+<% @tags.each do |tag| %>
+<%= tag.tag_name %>
+<% end %>
+
+

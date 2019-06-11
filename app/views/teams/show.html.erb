@@ -1,0 +1,20 @@
+<h1>Teams#show</h1>
+
+<p>チーム詳細</p>
+
+<p>チーム名</p>
+<%= @team.team_name %>
+<%= attachment_image_tag @team, :team_image, format: 'jpeg' ,size: '380x380',class: 'img-responsive img-rounded' %>
+
+
+
+
+<p>チーム紹介</p>
+<%= @team.team_body %>
+<br>
+
+<p>メンバー</p>
+<%= @user_team.each do |u| %>
+<%= u.user.name %>
+<% end %>
+

@@ -1,0 +1,43 @@
+<h1>Teams#new</h1>
+<p>チーム作成</p>
+<p id="notice"><%= notice %></p>
+
+<%= form_for (@team) do |f| %>
+
+	<div class="field">
+		<%= f.label :team_name, "チーム名" %>
+		<%= f.text_field :team_name %>
+	</div>
+
+	<div class="field">
+		<%= f.label :team_body, "チーム紹介文" %>
+		<%= f.text_area :team_body %>
+	</div>
+
+	<div class="field">
+          <%= f.label :team_image_id, "チーム画像" %>
+          <%= f.attachment_field :team_image %>
+    </div>
+
+	<%= f.fields_for :user_teams do |t| %>
+	        <%= t.hidden_field :user_id, :value => current_user.id %>
+	<% end %>
+
+	<p>タグ設定</p>
+
+	<div class="tags">
+        <%= f.fields_for :tags do |tag| %>
+            <%= render 'tag_fields', f: tag, class: 'form-control' %>
+        <% end %>
+        <div class="links">
+              <%= link_to_add_association '＋タグを追加', f, :tags, class: "btn btn-link" %>
+        </div>
+        </div>
+
+	<div class="actions">
+	      <%= f.submit "チーム作成", class: 'btn btn-success w-100' %>
+	</div>
+
+<% end %>
+
+
