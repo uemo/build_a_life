@@ -19,6 +19,22 @@ class TeamsController < ApplicationController
     end
   end
 
+  def edit
+    @team = Team.find(params[:id])
+    @tag = Tag.where(team_id: params[:id])
+  end
+
+  def update
+    @team = Team.find(params[:id])
+    if @team.update(team_params)
+       flash[:notice] = "チーム情報を更新しました。"
+       redirect_to team_path(@team)
+    else
+      flash[:notice] = "チーム情報の更新に失敗しました。もう一度登録内容を確認してください。"
+      render :edit
+    end
+  end
+
   def show
     @team = Team.find(params[:id])
     @user_team = UserTeam.where(team_id: params[:id])
