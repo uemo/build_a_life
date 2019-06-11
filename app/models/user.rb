@@ -11,4 +11,7 @@ class User < ApplicationRecord
   has_many :favorites
   has_many :notes
   has_many :comments
+
+  attachment :user_image
+
 end

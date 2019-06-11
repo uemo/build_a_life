@@ -21,7 +21,8 @@ class TeamsController < ApplicationController
 
   def show
     @team = Team.find(params[:id])
-    @user_team = UserTeam.where(team_id: @team.id)
+    @user_team = UserTeam.where(team_id: params[:id])
+    @tags = Tag.where(team_id: params[:id])
   end
 
   def index

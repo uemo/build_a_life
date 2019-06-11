@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_11_055017) do
+ActiveRecord::Schema.define(version: 2019_06_11_095710) do
 
   create_table "articles", force: :cascade do |t|
     t.integer "team_id"
@@ -105,7 +105,6 @@ ActiveRecord::Schema.define(version: 2019_06_11_055017) do
     t.string "ruby_name"
     t.string "hundle_name"
     t.string "phone"
-    t.integer "user_iamge_id"
     t.string "birthday"
     t.string "address"
     t.text "introduction"
@@ -116,6 +115,7 @@ ActiveRecord::Schema.define(version: 2019_06_11_055017) do
     t.integer "number_return"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "user_image_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

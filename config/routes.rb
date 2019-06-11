@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :users, except:[:new,:edit] do
+  resources :users, except:[:new] do
    resources :logs, only:[:create,:index]
 end
 
