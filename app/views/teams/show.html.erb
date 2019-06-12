@@ -17,7 +17,12 @@
 <br>
 
 <p>メンバー</p>
-<% @user_team.each do |u| %>
+<% @user_teams.each do |u| %>
 <%= u.user.hundle_name %>
 <% end %>
 
+<%#<% form_for (@user_team) do |v| %>
+<%#<%= v.hidden_field :team_id :value => @team.id %>
+<%#<%= v.hidden_field :user_id :value => current_user.id %>
+
+<%= button_to 'チームに参加する', user_teams_path(user_team: {user_id: current_user.id, team_id: @team.id}), method: :post %>

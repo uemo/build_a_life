@@ -37,12 +37,26 @@ class TeamsController < ApplicationController
 
   def show
     @team = Team.find(params[:id])
-    @user_team = UserTeam.where(team_id: params[:id])
+    @user_team = UserTeam.new
+    @user_teams = UserTeam.where(team_id: params[:id])
+    @tags = Tag.where(team_id: params[:id])
+  end
+
+  def home
+    @team = Team.find(params[:id])
+    @user_teams = UserTeam.where(team_id: params[:id])
     @tags = Tag.where(team_id: params[:id])
   end
 
   def index
     @teams = Team.all
+  end
+
+  def destroy
+    team = Team.find(params[:id])
+    team.destroy
+    flash[:notice] = "チームを削除しました。"
+    redirect_to teams_path
   end
 
   private

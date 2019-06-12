@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'teams/home/:id' => 'teams#home'
+
   devise_for :users
 
   resources :users, except:[:new] do
@@ -16,8 +18,9 @@ end
    resources :articles
    resources :chats, only:[:create,:destroy]
    resources :tags, only:[:create,:destroy]
-   resources :user_teams, only:[:create,:destroy,:index]
 end
+
+  resources :user_teams, only:[:create,:destroy,:index]
 
   resources :works, except:[:show,:edit]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
