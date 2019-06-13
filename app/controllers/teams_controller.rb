@@ -46,6 +46,8 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
     @user_teams = UserTeam.where(team_id: params[:id])
     @tags = Tag.where(team_id: params[:id])
+    @articles = Article.all
+    @article = Article.new
   end
 
   def index

@@ -1,16 +1,13 @@
-<p>新規記事投稿</p>
+<p>記事編集</p>
 <div class="container">
     <div class="row">
         <div class="col-xs-10 col-xs-offset-1">
-        	<h3>投稿フォーム</h3>
+        	<h3>編集フォーム</h3>
         	<%= form_for [@team, @article] do |f| %>
-        	    <%= f.hidden_field :user_id, :value => current_user.id %>
-        	    <%= f.hidden_field :team_id, :value => @team.id %>
-                <p>件名</p>
         	    <%= f.text_field :article_title, autofocus: true, required: true %><br>
-                <p>内容</p>
         		<%= f.text_area :article_body, autofocus: true, required: true, :size=>"60x10" %><br>
-        		<%= f.submit "投稿", class: "btn btn-default" %>
+        		<%= f.submit "更新", class: "btn btn-default" %>
+                <%= link_to '削除', team_article_path(@article.id), method: :delete, "data-confirm" => "削除しますか？" %>
         	<% end %>
     	</div>
 	</div>

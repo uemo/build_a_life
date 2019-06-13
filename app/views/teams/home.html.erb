@@ -5,3 +5,14 @@
 <% @user_teams.each do |u| %>
 <%= u.user.hundle_name %>
 <% end %>
+
+<p>投稿記事</p>
+<% @team.articles.each do |t| %>
+	<div class="article">
+		<p>投稿者</p>
+		<%= t.user.hundle_name %>
+		<p>件名</p>
+		<%= t.article_title %>
+	</div>
+<% end %>
+
