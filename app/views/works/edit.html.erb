@@ -1,0 +1,34 @@
+<div class="container teams">
+	<div class="row">
+		<%= render "devise/shared/error_messages", resource: @work %>
+		<div class="edit_work_box col-xs-6">
+			<h2 class="text-center">ワーク情報編集</h2>
+			<%= form_for(@work) do |f| %>
+			<h4><ワーク名></h4>
+				<%= f.text_field :work_title, autofocus: true, style: "width:100%" %>
+			<h4><知識ステータス></h4>
+				<%= f.text_field :status_k, autofocus: true, style: "width:100%" %>
+			<h4><魅力ステータス></h4>
+				<%= f.text_field :status_g, autofocus: true, style: "width:100%" %>
+			<h4><メンタルステータス></h4>
+				<%= f.text_field :status_m, autofocus: true, style: "width:100%" %>
+			<h4><協調性ステータス></h4>
+				<%= f.text_field :status_c, autofocus: true, style: "width:100%" %>
+			<h4><社交性ステータス></h4>
+				<%= f.text_field :status_s, autofocus: true, style: "width:100%" %>
+			<h4><経験値></h4>
+				<%= f.text_field :exp, autofocus: true, style: "width:100%" %>
+
+			<div class="field">
+    　　　　　　<label>イメージ画像</label><br />
+    　　　　　　<%= f.attachment_field :work_image %>
+  　　　　　</div>
+
+
+			   <%= f.submit "更新する" %>
+
+	   <% end %>
+
+	    </div>
+	</div>
+</div>

@@ -1,0 +1,46 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-2 col-xs-offset-2">
+		   <h2>ワーク一覧</h2>
+	  </div>
+	  <div class="col-xs-8"><br>
+		  <%= link_to '新規登録', new_work_path, class:"btn btn-default" %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-10 col-xs-offset-1">
+			<table class="table table-hover">
+            <thead>
+              <tr class="info">
+                <th>イメージ画像</th>
+                <th>ワーク名</th>
+                <th>知識ステータス</th>
+                <th>魅力ステータス</th>
+                <th>メンタルステータス</th>
+                <th>協調性ステータス</th>
+                <th>社交性ステータス</th>
+                <th>経験値</th>
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @works.each do |work| %>
+                <tr class="active">
+                  <td> <%= attachment_image_tag work, :work_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" ,size: '100x100' %></td>
+                  <td> <%= work.work_title %></td>
+                  <td> <%= work.status_k %></td>
+                  <td> <%= work.status_g %></td>
+                  <td> <%= work.status_m %></td>
+                  <td> <%= work.status_c %></td>
+                  <td> <%= work.status_s %></td>
+                  <td> <%= work.exp %></td>
+                  <td> <%= link_to "編集", edit_work_path(work.id) %></td>
+                  <td> <%= link_to '削除', work_path(work.id), method: :delete, "data-confirm" => "削除しますか？" %></td>
+                </tr>
+              <% end %>
+            </tbody>
+      </table>
+		</div>
+	</div>
+</div>

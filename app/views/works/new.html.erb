@@ -1,0 +1,50 @@
+<p>ワーク作成</p>
+<p id="notice"><%= notice %></p>
+
+<%= form_for (@work) do |f| %>
+
+	<div class="field">
+		<%= f.label :work_title, "ワーク名" %>
+		<%= f.text_field :work_title %>
+	</div>
+
+	<div class="field">
+		<%= f.label :status_k, "知識ステータス" %>
+		<%= f.text_field :status_k %>
+	</div>
+
+	<div class="field">
+		<%= f.label :status_g, "魅力ステータス" %>
+		<%= f.text_field :status_g %>
+	</div>
+
+	<div class="field">
+		<%= f.label :status_m, "メンタルステータス" %>
+		<%= f.text_field :status_m %>
+	</div>
+
+	<div class="field">
+		<%= f.label :status_c, "協調性ステータス" %>
+		<%= f.text_field :status_c %>
+	</div>
+
+	<div class="field">
+		<%= f.label :status_s, "社交性ステータス" %>
+		<%= f.text_field :status_s %>
+	</div>
+
+	<div class="field">
+		<%= f.label :exp, "経験値" %>
+		<%= f.text_field :exp %>
+	</div>
+
+	<div class="field">
+          <%= f.label :work_image_id, "イメージ画像" %>
+          <%= f.attachment_field :work_image %>
+    </div>
+
+	      <%= f.submit "ワーク作成", class: 'btn btn-success w-100' %>
+
+<% end %>
+
+

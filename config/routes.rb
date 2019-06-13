@@ -22,6 +22,6 @@ end
 
   resources :user_teams, only:[:create,:destroy,:index]
 
-  resources :works, except:[:show,:edit]
+  resources :works, except:[:show]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

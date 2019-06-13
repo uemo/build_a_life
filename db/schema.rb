@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_11_095710) do
+ActiveRecord::Schema.define(version: 2019_06_13_122027) do
 
   create_table "articles", force: :cascade do |t|
     t.integer "team_id"
@@ -137,6 +137,7 @@ ActiveRecord::Schema.define(version: 2019_06_11_095710) do
     t.integer "exp"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "work_image_id"
   end
 
 end
