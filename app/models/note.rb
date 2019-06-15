@@ -1,6 +1,6 @@
 class Note < ApplicationRecord
 	belongs_to :user
-	belongs_to :works
+	belongs_to :work
 	has_many :comments
 	has_many :favorites, dependent: :destroy
 

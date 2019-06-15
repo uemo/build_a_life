@@ -9,10 +9,25 @@ class NotesController < ApplicationController
   	note = Note.new(note_params)
   	note.user_id = current_user.id
   	if note.save
-		flash[:notice] = "今日の進捗を投稿しました！"
-		redirect_to note_path(note)
+      # ユーザーへワークに設定した各ステータス値を加算する
+       user = User.find(current_user.id)
+       value_k = user.kind.to_i + note.work.status_k.to_i
+       value_g = user.glamor.to_i + note.work.status_g.to_i
+       value_m = user.mental.to_i + note.work.status_m.to_i
+       value_c = user.coop.to_i + note.work.status_c.to_i
+       value_s = user.social.to_i + note.work.status_s.to_i
+       value_e = user.user_exp.to_i + note.work.exp.to_i
+       user.update(kind: value_k.to_i,
+                   glamor: value_g.to_i,
+                   mental: value_m.to_i,
+                   coop: value_c.to_i,
+                   social: value_s.to_i,
+                   user_exp: value_e.to_i)
+       # ここまで
+		   flash[:notice] = "今日の進捗を投稿しました！"
+		   redirect_to note_path(note)
 	else
-		flash[:notice] = "投稿内容に不備があります。もう一度記入してください。"
+		  flash[:notice] = "投稿内容に不備があります。もう一度記入してください。"
 	    redirect_to new_note_path
 	end
   end
