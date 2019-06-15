@@ -3,8 +3,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>時間</strong>
+  <strong>日付</strong>
   <%= @note.start_time.strftime("%Y-%m-%d") %>
+</p>
+
+<p>
+  <strong>ワーク</strong>
+  <%= @note.work.work_title %>
 </p>
 
 <p>
@@ -15,6 +20,24 @@
 <p>
   <%= @note.result %>
 </p>
+
+<p>
+  <strong>コメント</strong>
+ <% @note.comments.each do |comment| %>
+ <%= comment.user.hundle_name %>
+ <%= comment.created_at.strftime('%Y/%m/%d') %>
+ <%= comment.comment_body %>
+ <% end %>
+</p>
+
+<%= form_for [@note, @comment] do |f| %>
+    <div class="row">
+        <div class="col-sm-12">
+            <%= f.text_area :comment_body, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+        </div>
+    </div>
+    <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+<% end %>
 
 <%= link_to 'Destroy', note_path(@note), method: :delete, data: { confirm: 'Are you sure?' } %>
 <%= link_to 'Back', user_logs_path(current_user.id) %>

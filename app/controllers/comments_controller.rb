@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
 
-	def  create
+	def create
 		@comment = Comment.new(comment_params)
 		@note = Note.find(params[:note_id])
 		@comment.user_id = current_user.id
@@ -20,6 +20,7 @@ class CommentsController < ApplicationController
 		comment.destroy
 		flash[:notice] = "コメントを削除しました。"
         redirect_to note_path(@note)
+    end
 
 	private
 	def comment_params

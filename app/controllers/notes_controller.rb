@@ -2,7 +2,6 @@ class NotesController < ApplicationController
 
   def new
   	@note = Note.new
-    @comment = Comment.new
   end
 
   def create
@@ -40,6 +39,7 @@ class NotesController < ApplicationController
 
   def show
   	@note = Note.find(params[:id])
+    @comment = Comment.new
   end
 
   private
