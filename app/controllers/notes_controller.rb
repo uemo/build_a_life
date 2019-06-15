@@ -2,6 +2,7 @@ class NotesController < ApplicationController
 
   def new
   	@note = Note.new
+    @comment = Comment.new
   end
 
   def create
@@ -32,6 +33,7 @@ class NotesController < ApplicationController
   		                         :note_image_id,
   		                         :note_body,
   		                         :result,
-  		                         :start_time)
+  		                         :start_time,
+                               :work_id)
   end
 end

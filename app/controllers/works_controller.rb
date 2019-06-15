@@ -8,7 +8,11 @@ class WorksController < ApplicationController
 		@work = Work.find(params[:id])
 	end
 
-	def crete
+	def index
+		@works = Work.all
+	end
+
+	def create
 		@work = Work.new(work_params)
 		if @work.save
 			flash[:notice] = "タグを登録しました。"

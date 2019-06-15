@@ -11,7 +11,7 @@ end
   resources :notes, except:[:index,:edit] do
    resources :favorites, only:[:create,:destroy]
    resources :comments, only:[:create,:destroy]
-   resources :work_notes, only:[:create,:destroy,:update]
+   # resources :work_notes, only:[:create,:destroy,:update]
 end
 
   resources :teams do
@@ -21,7 +21,7 @@ end
 end
 
   resources :user_teams, only:[:create,:destroy,:index]
-
   resources :works, except:[:show]
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

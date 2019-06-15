@@ -3,12 +3,17 @@
 <%= form_with(model: @note, local: true) do |f| %>
 
   <div class="time">
-    <%= f.label :start_time %>
+    <%= f.label :start_time, "日付" %>
     <%= f.date_select :start_time %>
   </div>
 
+  <div class="work">
+    <%= f.label :work_id, "ワーク" %>
+    <%= f.collection_select :work_id, Work.all, :id, :work_title, class: 'form-control input-sm' %>
+  </div>
+
   <div class="content">
-    <%= f.label :note_body %>
+    <%= f.label :note_body, "メモ" %>
     <%= f.text_area :note_body %>
   </div>
 
