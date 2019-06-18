@@ -5,8 +5,10 @@ class NotesController < ApplicationController
   end
 
   def create
-  	note = Note.new(note_params)
-  	note.user_id = current_user.id
+    note = Note.new(note_params)
+    note.user_id = current_user.id
+    date = Note.where(user_id: current_user.id)
+    date_last = date.last
   	if note.save
       # ユーザーへワークに設定した各ステータス値を加算する
        user = User.find(current_user.id)
@@ -23,6 +25,23 @@ class NotesController < ApplicationController
                    social: value_s.to_i,
                    user_exp: value_e.to_i)
        # ここまで
+
+       # 継続日数を計算する
+       # 保存したレコードの日付とユーザーが前回作成した最新レコードの日付の差分を求める
+       day = (Date.parse(note.start_time.to_s) - Date.parse(date_last.start_time.to_s)).to_i
+       # 差分が1の場合number_daysカラムに値を1加える
+       if day = 1
+          keep_day = user.number_days + 1
+          user.update(number_days: keep_day)
+       end
+       # 差分が2以上の場合number_daysカラムの値を0にし、return_dayカラムに値を1加える
+       if day >= 2
+          return_day = user.number_retrun + 1
+          stop_day = 0
+          user.update(number_days: stop_day, number_return: return_day)
+       end
+       # ここまで
+
 		   flash[:notice] = "今日の進捗を投稿しました！"
 		   redirect_to note_path(note)
 	else

@@ -1,13 +1,19 @@
-<h1>Logs#index</h1>
 
-<%= link_to '進捗を記載', new_note_path %>
+<div class="title">
+	<h2>PROGRESS</h2>
+	<p>進捗</p>
+</div>
 
-<%= month_calendar events: @notes do |date, notes| %>
-  <%= date.day %>
+<div class="calender_box">
+<%= link_to '進捗を書き込む', new_note_path, class: 'btn-edge' %>
 
-  <% notes.each do |note| %>
-    <div>
-      <%= link_to note.result, note %>
-    </div>
-  <% end %>
-<% end %>
+	<%= month_calendar events: @notes do |date, notes| %>
+	  <%= date.day %>
+
+		  <% notes.each do |note| %>
+		    <div>
+		      <%= link_to note.result, note %>
+		    </div>
+		  <% end %>
+	 <% end %>
+</div>

@@ -7,14 +7,29 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
 
-<!-- Chart.js用の記述 -->
+    <!-- Chart.js用の記述 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.bundle.min.js"></script>
-<!-- ここまで -->
+    <!-- ここまで -->
   </head>
 
   <body>
+
+    <header>
+      <div class="top_box">
+        <div class="top_image">
+
+            </div>
+      </div>
+    </header>
+
     <%= yield %>
+
+      <!-- ここからfooterの記述 -->
+      <footer>
+           <p class="my-white">©︎2019 Hot milk</p>
+      </footer>
   </body>
 </html>

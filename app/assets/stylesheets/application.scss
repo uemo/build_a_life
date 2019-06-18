@@ -17,3 +17,51 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+/*リセットCSS*/
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/*文字色を指定する*/
+.my-white {
+	color:#ffffff;
+}
+
+
+.container {
+	background-color:#93bbcb;
+	width:100%;
+}
+
+ .top_box {
+    height:100px;
+    width:100%;
+    background-color:black;
+ }
+
+ .top_image {
+	position: absolute;
+	left: 20px;
+}
+
+h2 {
+	font-family: 'Oswald', sans-serif;
+	margin:0;
+}
+
+p {
+	font-family: "ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","メイリオ",Meiryo,"ＭＳ Ｐゴシック","MS PGothic",sans-serif;
+	margin:0;
+}
+
+footer {
+	height:60px;
+	width: 100%;
+	line-height:60px;
+	text-align:center;
+	background-color:black;
+}
+

@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
 	before_action :configure_permitted_parameters, if: :devise_controller?
 
   def after_sign_in_path_for(resource)
-    logs_index_path
+    user_logs_path(user_id: current_user.id)
   end
 
 

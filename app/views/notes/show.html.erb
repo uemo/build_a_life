@@ -21,6 +21,22 @@
   <%= @note.result %>
 </p>
 
+<% if @note.favorited_by?(current_user) %>
+  <li>
+    <%= link_to note_favorite_path(@note), method: :delete do %>
+      <i class="far fa-thumbs-up" aria-hidden="true" style="color: blue;"></i>
+      <%= @note.favorites.count %> いいね
+    <% end %>
+  </li>
+<% else %>
+  <li>
+    <%= link_to note_favorites_path(@note), method: :post do %>
+      <i class="fas fa-thumbs-up" aria-hidden="true" style="color: grey;"></i>
+      <%= @note.favorites.count %> いいね
+    <% end %>
+  </li>
+<% end %>
+
 <p>
   <strong>コメント</strong>
  <% @note.comments.each do |comment| %>

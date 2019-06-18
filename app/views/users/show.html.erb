@@ -2,13 +2,13 @@
 <div><canvas id="myChart"></canvas></div>
 
 <!-- 各ボタン -->
-<div style="text-align:center">
+<!-- <div style="text-align:center">
 	<button id="randomizeData">ランダムデータ</button>
 	<button id="addDataset">データセットの追加</button>
 	<button id="removeDataset">データセットの削除</button>
 	<button id="addData">データの追加</button>
 	<button id="removeData">データの削除</button>
-</div>
+</div> -->
 
 <script>
 
@@ -24,9 +24,9 @@ var colorSet = {
 };
 
 // 乱数生成(0～100)
-var rnd100 = function(){
-	return Math.round(Math.random() * 100);
-};
+// var rnd100 = function(){
+// 	return Math.round(Math.random() * 100);
+// };
 
 // 色のRGB変換
 var color = Chart.helpers.color;
@@ -43,7 +43,7 @@ var config = {
 			backgroundColor: color(colorSet.red).alpha(0.5).rgbString(),
 			borderColor: colorSet.red,
 			pointBackgroundColor: colorSet.red,
-			data: [40, 50, 60, 70, 80]
+			data: [<%= @user.kind %>, <%= @user.mental %>, <%= @user.coop %>, <%= @user.social %>, <%= @user.glamor %>]
 		},]
 	},
 	options: {
@@ -86,75 +86,75 @@ var myRadar = new Chart($("#myChart"), config);
 /*
  * ランダムデータ（#randomizeData）
  */
-$("#randomizeData").click(function(){
-	config.data.datasets.forEach(function(dataset){
-		dataset.data = dataset.data.map(function(){
-			return rnd100();
-		});
-	});
+// $("#randomizeData").click(function(){
+// 	config.data.datasets.forEach(function(dataset){
+// 		dataset.data = dataset.data.map(function(){
+// 			return rnd100();
+// 		});
+// 	});
 
-	myRadar.update();
-});
+// 	myRadar.update();
+// });
 
-var colorNames = Object.keys(colorSet);
+// var colorNames = Object.keys(colorSet);
 
 /*
  * データセットの追加（#addDataset）
  */
-$("#addDataset").click(function(){
-	var colorName = colorNames[config.data.datasets.length % colorNames.length];;
-	var newColor = colorSet[colorName];
+// $("#addDataset").click(function(){
+// 	var colorName = colorNames[config.data.datasets.length % colorNames.length];;
+// 	var newColor = colorSet[colorName];
 
-	var newDataset = {
-		label: 'Dataset ' + config.data.datasets.length,
-		borderColor: newColor,
-		backgroundColor: color(newColor).alpha(0.2).rgbString(),
-		pointBorderColor: newColor,
-		data: [],
-	};
+// 	var newDataset = {
+// 		label: 'Dataset ' + config.data.datasets.length,
+// 		borderColor: newColor,
+// 		backgroundColor: color(newColor).alpha(0.2).rgbString(),
+// 		pointBorderColor: newColor,
+// 		data: [],
+// 	};
 
-	for (var index=0; index < config.data.labels.length; ++index) {
-		newDataset.data.push(rnd100());
-	}
+// 	for (var index=0; index < config.data.labels.length; ++index) {
+// 		newDataset.data.push(rnd100());
+// 	}
 
-	config.data.datasets.push(newDataset);
-	myRadar.update();
-});
+// 	config.data.datasets.push(newDataset);
+// 	myRadar.update();
+// });
 
-/*
- * データの追加（#addData）
- */
-$("#addData").click(function(){
-	if (config.data.datasets.length > 0){
-		config.data.labels.push('dataset #' + config.data.labels.length);
+// /*
+//  * データの追加（#addData）
+//  */
+// $("#addData").click(function(){
+// 	if (config.data.datasets.length > 0){
+// 		config.data.labels.push('dataset #' + config.data.labels.length);
 
-		config.data.datasets.forEach(function(dataset){
-			dataset.data.push(rnd100());
-		});
+// 		config.data.datasets.forEach(function(dataset){
+// 			dataset.data.push(rnd100());
+// 		});
 
-		myRadar.update();
-	}
-});
+// 		myRadar.update();
+// 	}
+// });
 
-/*
- * データセットの削除（#removeDataset）
- */
-$("#removeDataset").click(function(){
-	config.data.datasets.splice(0, 1);
-	myRadar.update();
-});
+// /*
+//  * データセットの削除（#removeDataset）
+//  */
+// $("#removeDataset").click(function(){
+// 	config.data.datasets.splice(0, 1);
+// 	myRadar.update();
+// });
 
-/* 
- * データの削除（#removeData）
- */
-$("#removeData").click(function(){
-	config.data.labels.pop(); // remove the label first
+// /*
+//  * データの削除（#removeData）
+//  */
+// $("#removeData").click(function(){
+// 	config.data.labels.pop(); // remove the label first
 
-	config.data.datasets.forEach(function(dataset){
-		dataset.data.pop();
-	});
+// 	config.data.datasets.forEach(function(dataset){
+// 		dataset.data.pop();
+// 	});
 
-	myRadar.update();
-});
+// 	myRadar.update();
+// });
 
 </script>
