@@ -27,6 +27,7 @@
 }
 
 .calender_box{
+  margin-top: 10px;
   width:90%;
   margin: 0 auto;
 }
@@ -39,52 +40,45 @@
   border-bottom:2px solid black;
 }
 
-.btn-edge {
+.user_info{
+  width:90%;
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.name_box{
+  float:left;
+}
+
+.days_box{
+  float:right;
+}
+
+.btn-flat-bottom-border {
   position: relative;
   display: inline-block;
+  font-weight: bold;
+  padding: 7px 10px 10px 10px;
   text-decoration: none;
-  padding: 0 30px;
-  font-size: 19px;
-  height: 40px;
-  line-height: 40px;
-  background: #51587b;
-  font-size: 20px;
-  color: rgb(255, 255, 255);
+  color: #FFF;
+  background: #a180dc;
   transition: .4s;
 }
 
-.btn-edge:before {
-  position: absolute;
-  content: '';
-  left: 0;
-  top: 0;
-  width: 0;
-  height: 0;
-  border: none;
-  border-left: solid 21px white;
-  border-bottom: solid 41px transparent;
-  z-index: 1;
-  transition: .4s;
+.btn-flat-bottom-border > span {
+  border-bottom: solid 2px #FFF;
 }
 
-.btn-edge:after {
-  position: absolute;
-  content: '';
-  right: 0;
-  top: 0;
-  width: 0;
-  height: 0;
-  border: none;
-  border-left: solid 21px transparent;
-  border-bottom: solid 41px white;
-  z-index: 1;
-  transition: .4s;
+.btn-flat-bottom-border:hover {
+  background: #91b5fb;
 }
 
-.btn-edge:hover:before, .btn-edge:hover:after {
-  border-left-width: 25px;
+.calendar-heading {
+  text-align:center;
 }
 
-.deg_btn:hover {
-  background: #2c3148;
+.calendar-title {
+  font-size: 40px;
+  font-family: 'Kalam', cursive;
 }

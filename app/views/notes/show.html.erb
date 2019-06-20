@@ -1,59 +1,79 @@
-<h1>Notes#show</h1>
 
-<p id="notice"><%= notice %></p>
+<div class="title">
+  <h2>PROGRESS</h2>
+  <p>進捗</p>
+</div>
 
-<p>
-  <strong>日付</strong>
-  <%= @note.start_time.strftime("%Y-%m-%d") %>
-</p>
+<div class="body_note">
+  <h3><%= @note.start_time.strftime("%Y-%m-%d") %></h3>
 
-<p>
-  <strong>ワーク</strong>
-  <%= @note.work.work_title %>
-</p>
+  <div class="work_container clearfix">
+    <div class="work_box">
+      <div class="box25">
+        <p><%= @note.work.work_title %></p>
+      </div>
+      <div class="image">
+      <%= attachment_image_tag @note.work, :work_image, :fill, 100, 100, fallback: "no_image.jpg" ,size: '200x200' %>
+         <div class="medal">
+          <%= image_tag("goldstar.png", :size => "50x50") %>
+         </div>
+      </div>
+    </div>
 
-<p>
-  <strong>メモ</strong>
-  <%= @note.note_body %>
-</p>
+    <div class="work_2">
+       <div class="box28">
+           <span class="box-title">メモ</span>
+           <p><%= @note.note_body %></p>
 
-<p>
-  <%= @note.result %>
-</p>
-
-<% if @note.favorited_by?(current_user) %>
-  <li>
-    <%= link_to note_favorite_path(@note), method: :delete do %>
-      <i class="far fa-thumbs-up" aria-hidden="true" style="color: blue;"></i>
-      <%= @note.favorites.count %> いいね
-    <% end %>
-  </li>
-<% else %>
-  <li>
-    <%= link_to note_favorites_path(@note), method: :post do %>
-      <i class="fas fa-thumbs-up" aria-hidden="true" style="color: grey;"></i>
-      <%= @note.favorites.count %> いいね
-    <% end %>
-  </li>
-<% end %>
-
-<p>
-  <strong>コメント</strong>
- <% @note.comments.each do |comment| %>
- <%= comment.user.hundle_name %>
- <%= comment.created_at.strftime('%Y/%m/%d') %>
- <%= comment.comment_body %>
- <% end %>
-</p>
-
-<%= form_for [@note, @comment] do |f| %>
-    <div class="row">
-        <div class="col-sm-12">
-            <%= f.text_area :comment_body, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+          <% if @note.favorited_by?(current_user) %>
+            <p>
+            <%= link_to note_favorite_path(@note),  class: 'good', method: :delete do %>
+              <i class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red; font-size:20px;"></i>
+              <span><%= @note.favorites.count %>いいね</span>
+            <% end %>
+            </p>
+          <% else %>
+             <p>
+             <%= link_to note_favorites_path(@note), class: 'good', method: :post do %>
+              <i class="glyphicon glyphicon-heart" aria-hidden="true" style="color: black; font-size:20px;"></i>
+              <span><%= @note.favorites.count %>いいね</span>
+            <% end %>
+            </p>
+          <% end %>
         </div>
     </div>
-    <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
-<% end %>
 
-<%= link_to 'Destroy', note_path(@note), method: :delete, data: { confirm: 'Are you sure?' } %>
-<%= link_to 'Back', user_logs_path(current_user.id) %>
+    </div>
+    <%= link_to '削除', note_path(@note), method: :delete, data: { confirm: '記事を削除してもよろしいですか?' }, class: 'fr' %>
+
+  </div>
+
+  <div class="title2">
+    <h2>COMMENTS</h2>
+    <p>コメント</p>
+  </div>
+
+  <div class="comment_box">
+    <table width="100%">
+      <% @note.comments.each do |comment| %>
+      <tr>
+        <td style="padding-top:5px" width="5%"><%= attachment_image_tag comment.user, :user_image, :fill, 100, 100, fallback: "no_image.jpg" ,size: '50x50',class: 'img-responsive img-rounded' %></td>
+        <td align="center"><%= comment.user.hundle_name %></td>
+        <td width="10%"><%= comment.created_at.strftime('%Y/%m/%d') %></td>
+        <td width="75%"><%= comment.comment_body %></td>
+      </tr>
+     <% end %>
+    </table>
+  </div>
+
+  <div class="comment_form_box clearfix">
+     <%= form_for [@note, @comment] do |f| %>
+        <%= f.text_area :comment_body, rows:'1', class: "form-control",placeholder: "コメント" %>
+        <%= f.submit "送信する", class: "btn-gradient-radius" %>
+     <% end %>
+  </div>
+
+  <%#<%= link_to 'Back', user_logs_path(current_user.id) %>
+
+
+

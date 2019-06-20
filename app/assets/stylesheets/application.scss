@@ -25,6 +25,12 @@
 	box-sizing: border-box;
 }
 
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
 /*文字色を指定する*/
 .my-white {
 	color:#ffffff;
@@ -32,7 +38,6 @@
 
 
 .container {
-	background-color:#93bbcb;
 	width:100%;
 }
 
@@ -43,11 +48,19 @@
  }
 
  .top_image {
-	position: absolute;
-	left: 20px;
+    margin-top:10px;
+    width:200px;
+	margin:0 auto;
 }
 
+/*フォント設定に関する記述*/
+
 h2 {
+	font-family: 'Oswald', sans-serif;
+	margin:0;
+}
+
+h3 {
 	font-family: 'Oswald', sans-serif;
 	margin:0;
 }
