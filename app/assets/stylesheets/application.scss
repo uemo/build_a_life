@@ -36,13 +36,20 @@
 	color:#ffffff;
 }
 
+.text-center{
+	margin:0 auto;
+}
+
+.mrt-10 {
+	margin-top:10px;
+}
 
 .container {
 	width:100%;
 }
 
  .top_box {
-    height:100px;
+    height:120px;
     width:100%;
     background-color:black;
  }
@@ -52,6 +59,25 @@
     width:200px;
 	margin:0 auto;
 }
+
+nav {
+	width:80%;
+	margin:0 auto;
+}
+
+.header_link_item{
+	float:left;
+	width:20%;
+	text-align:center;
+}
+
+.nav_font{
+	font-family: 'Oswald';
+	font-size:x-large;
+	color:white;
+}
+
+
 
 /*フォント設定に関する記述*/
 
@@ -63,6 +89,12 @@ h2 {
 h3 {
 	font-family: 'Oswald', sans-serif;
 	margin:0;
+}
+
+h4 {
+	font-family: 'Oswald', sans-serif;
+	margin:0;
+	border-bottom:1px solid black;
 }
 
 p {

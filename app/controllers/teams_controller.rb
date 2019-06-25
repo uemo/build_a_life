@@ -1,8 +1,8 @@
 class TeamsController < ApplicationController
 
   def new
-  	@team = Team.new
-  	@tags = Tag.all
+    @team = Team.new
+    @tags = Tag.all
     @team.tags.build
     @team.user_teams.build
   end
@@ -64,10 +64,10 @@ class TeamsController < ApplicationController
   private
 
   def team_params
-  	params.require(:team).permit(:team_image,
-  	                             :team_name,
-  	                             :team_body,
-  	                              tags_attributes: [:id, :team_id, :tag_name, :_destroy],
+     params.require(:team).permit(:team_image,
+                                 :team_name,
+                                 :team_body,
+                                  tags_attributes: [:id, :team_id, :tag_name, :_destroy],
                                   user_teams_attributes: [:id, :user_id, :team_id])
   end
 

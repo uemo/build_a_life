@@ -1,26 +1,37 @@
-<h2>Log in</h2>
+<div class="title">
+  <h2 class="tx-center">Log in</h2>
+  <p class="tx-center">ログイン</p>
+</div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+<div class="users_session_container">
+<div class="container">
+  <div class="row">
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+    <div class="col-xs-4 col-xs-offset-4">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <b>メールアドレス</b>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", style: "width:100%", class: 'form-group'  %>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+    <b>パスワード</b>
+    <%= f.password_field :password, autocomplete: "current-password", style: "width:100%", class: 'form-group' %>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="field">
+        <span>ユーザー情報を記録する</span>
+        <%= f.check_box :remember_me %>
+      </div>
+    <% end %>
+
+    <div class="action clearfix">
+      <%= f.submit "ログイン", class: "btn-gradient-radius"  %>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
 <% end %>
 
+<div class="text-center mrt-10">
 <%= render "devise/shared/links" %>
+</div>
+
+</div>
+</div>
+</div>
+</div>

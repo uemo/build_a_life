@@ -1,21 +1,66 @@
 
-<p>チーム板</p>
+<div class="title">
+  <h2>TEAM BOARD</h2>
+  <p>チーム交流板</p>
+</div>
 
-<p>メンバー</p>
-<% @user_teams.each do |u| %>
-<%= u.user.hundle_name %>
-<% end %>
+<div class="team_box">
+    <h3>MEMBER<font size="2">  メンバー</font></h3>
+     <div class="user_list">
+            <% @user_teams.each do |u| %>
+            <div class="user_list_container">
+                <%= attachment_image_tag u.user, :user_image, :fill, 100, 100, fallback: "no_image.jpg" ,size: '80x80',style: 'border-radius: 50%;' %>
+                <div class="text-center">
+                <%= link_to user_path(u.user.id) do %>
+                <%= u.user.hundle_name %>
+                </div>
+                <% end %>
+            </div>
+            <% end %>
+    </div>
 
-<p>投稿記事</p>
-<% @team.articles.each do |t| %>
-	<div class="article">
-		<p>投稿者</p>
-		<%= t.user.hundle_name %>
-		<p>件名</p>
-		<%= t.article_title %>
-	</div>
-<% end %>
+<div class="container">
+    <div class="row">
+    	<div class="col-xs-9">
+            <div class="article_container">
+            <h3 class="border_b">Article<font size="2">  記事</font></h3>
+            <table class="table article_table">
+                <thead>
+                <tr>
+                    <th width="21%">投稿日時</th>
+                    <th width="15%">ユーザー名</th>
+                    <th width="50%">件名</th>
+                    <th width="7%">&nbsp;</th>
+                    <th width="7%">&nbsp;</th>
+                </tr>
+                </thead>
+                <% @team.articles.each do |t| %>
+                <tbody>
+                <tr>
+                    <td><%= t.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+                    <td><%= t.user.hundle_name %></td>
+                    <td><%= t.article_title %></td>
+                    <td>
+                        <%= link_to '詳細', team_article_path(t) %>
+                    </td>
+                    <td>
+                        <%= link_to '削除', team_article_path(t), method: :delete, "data-confirm" => "削除しますか？" %>
+                    </td>
+                </tr>
+                </tbody>
+                <% end %>
+            </table>
+        </div>
+        </div>
+        <div class="col-xs-3">
+            <h3 class="border_b">CHAT<font size="2">  チャット</font></h3>
+            <p>Coming Soon..</p>
+		</div>
+            <%#= paginate @contacts %>
+    </div>
+</div>
+</div>
 
-<p>チャット</p>
+
 
 

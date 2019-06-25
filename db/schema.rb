@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_18_072554) do
+ActiveRecord::Schema.define(version: 2019_06_24_182909) do
 
   create_table "articles", force: :cascade do |t|
     t.integer "team_id"
@@ -110,18 +110,18 @@ ActiveRecord::Schema.define(version: 2019_06_18_072554) do
     t.string "address"
     t.text "introduction"
     t.text "goal"
-    t.integer "user_exp"
-    t.integer "number_days"
-    t.integer "max_number_days"
-    t.integer "number_return"
+    t.integer "user_exp", default: 0
+    t.integer "number_days", default: 0
+    t.integer "max_number_days", default: 0
+    t.integer "number_return", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "user_image_id"
-    t.integer "kind"
-    t.integer "glamor"
-    t.integer "mental"
-    t.integer "coop"
-    t.integer "social"
+    t.integer "kind", default: 0
+    t.integer "glamor", default: 0
+    t.integer "mental", default: 0
+    t.integer "coop", default: 0
+    t.integer "social", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

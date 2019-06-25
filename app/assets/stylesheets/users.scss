@@ -1,3 +1,91 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.title{
+  width:90%;
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-bottom:2px solid black;
+}
+
+.title2{
+  width:90%;
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  border-bottom:2px solid black;
+}
+
+.user_box{
+	width:90%;
+	margin: 0 auto;
+}
+
+.image_user {
+    padding-top:10px;
+    margin: 0 auto;
+	width:250px;
+	height:250px;
+}
+
+.user_show_th {
+  text-align: center;
+  width: 30%;
+  padding: 15px 0;
+}
+
+.user_show_td {
+  text-align: left;
+  width: 70%;
+  padding: 15px 0;
+  padding-left: 20px;
+}
+
+.status_box{
+    padding-top: 10px;
+	width:100%;
+	margin: 0 auto;
+}
+
+/*編集画面に関する記述*/
+.users_container {
+	margin-top:20px;
+	margin-bottom:20px;
+}
+
+.action {
+    width:30%;
+	margin:0 auto;
+}
+
+.btn-gradient-radius {
+  display: inline-block;
+  padding: 7px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  color: #FFF;
+  background-image: linear-gradient(45deg, #FFC107 0%, #ff8b5f 100%);
+  transition: .4s;
+}
+
+.btn-gradient-radius:hover {
+  background-image: linear-gradient(45deg, #FFC107 0%, #f76a35 100%);
+}
+
+.member_container {
+  width: 150px;
+  height: 200px;
+  margin: 0 auto;
+  float: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.users_session_container {
+  margin-top:20px;
+  margin-bottom:20px;
+  height:300px;
+}

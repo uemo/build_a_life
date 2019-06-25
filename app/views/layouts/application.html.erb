@@ -23,7 +23,48 @@
           <%= image_tag("buildAlife.png", :size => "200x80") %>
         </div>
 
-            </div>
+        <% if user_signed_in? %>
+        <nav>
+              <div class="header_link_item_box">
+                  <div class="header_link_item">
+                    <%= link_to "▶Home", user_logs_path(current_user.id), class: 'nav_font' %>
+                  </div>
+                  <div class="header_link_item">
+                    <%= link_to "▶MyPage", user_path(current_user.id), class: 'nav_font' %>
+                  </div>
+                  <div class="header_link_item">
+                    <%= link_to "▶Team", teams_path, class: 'nav_font' %>
+                  </div>
+                  <div class="header_link_item">
+                    <%= link_to "▶About", destroy_user_session_path, method: :delete, class: 'nav_font' %>
+                  </div>
+                    <div class="header_link_item">
+                        <%= link_to "▶Logout", destroy_user_session_path, method: :delete, class: 'nav_font' %>
+                    </div>
+              </div>
+        </nav>
+        <% else %>
+        <nav>
+              <div class="header_link_item_box">
+                  <div class="header_link_item">
+                    <%= link_to "▶Home", new_user_session_path, class: 'nav_font' %>
+                  </div>
+                  <div class="header_link_item">
+                    <%= link_to "▶MyPage", new_user_session_path, class: 'nav_font' %>
+                  </div>
+                  <div class="header_link_item">
+                    <%= link_to "▶Team", new_user_session_path, class: 'nav_font' %>
+                  </div>
+                  <div class="header_link_item">
+                    <%= link_to "▶About", new_user_session_path, method: :delete, class: 'nav_font' %>
+                  </div>
+                    <div class="header_link_item">
+                        <%= link_to "▶Logout", new_user_session_path, method: :delete, class: 'nav_font' %>
+                    </div>
+              </div>
+        </nav>
+        <% end %>
+
       </div>
     </header>
 
@@ -31,7 +72,7 @@
 
       <!-- ここからfooterの記述 -->
       <footer>
-           <p class="my-white">©︎2019 Hot milk</p>
+           <p class="my-white">©︎2019 buildAlife</p>
       </footer>
   </body>
 </html>

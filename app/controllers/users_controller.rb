@@ -8,6 +8,14 @@ before_action :authenticate_user!
 
   def show
     @user = User.find(params[:id])
+    @user_team = UserTeam.where(user_id: params[:id])
+
+    @user_team.each do |user_team|
+    my_team = user_team.team_id
+    @user_teams = UserTeam.where(team_id: my_team)
+    end
+    @team_member = @user_teams.all
+
   end
 
   def edit

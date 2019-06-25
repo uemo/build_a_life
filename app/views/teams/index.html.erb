@@ -1,21 +1,22 @@
-<h1>Teams#index</h1>
-<p>チームを探す</p>
 
+<div class="title">
+  <h2>TEAMS INFORMATION</h2>
+  <p>チーム一覧</p>
+</div>
+
+<div class="team_box clearfix">
         <% @teams.each do |team| %>
               <div class="team_container">
                   <%= link_to team_path(team.id) do %>
                   <%= attachment_image_tag team, :team_image, :fill, 100, 100, fallback: "no_image.jpg" ,size: '100x100' %><br>
-                  <%= team.team_name %>
-                  <br>
-                  <%= @team_tag.each do |t| %>
-                  <%= t.tag.tag_name %>
                   <% end %>
-                  <br>
+                  <div class="text-center">
+                  <b><%= team.team_name %></b>
+                  </div>
+                  <%# team.each do |t| %>
+                  <%#= t.tag.tag_name %>
+                  <%# end %>
               </div>
         <% end %>
 
-    </div>
-    <div class= "row">
-      <div class= "col-xs-4 col-xs-offset-4">
-        <%= paginate @teams %>
-      </div>
+</div>

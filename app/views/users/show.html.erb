@@ -1,4 +1,51 @@
 
+<div class="title">
+  <h2>MEMBER</h2>
+  <p>メンバー</p>
+</div>
+
+<div class="user_box">
+<div class="container">
+	<div class="row">
+		<div class="col-xs-4">
+			<div class="image_user">
+			<%= attachment_image_tag @user, :user_image, :fill, 100, 100, fallback: "no_image.jpg", size:'250x240',class: 'img-responsive' %>
+		    </div>
+		</div>
+		<div class="col-xs-8">
+			<table>
+				<tr>
+					<th class="user_show_th"><h4>Name<font size="1"> <名前></font></h4></th>
+					<td class="user_show_td"><%= @user.hundle_name %></td>
+				</tr>
+				<tr>
+					<th class="user_show_th"><h4>Team<font size="1"> <所属チーム></font></h4></th>
+					<td class="user_show_td"><% @user_team.each do |u| %><%= u.team.team_name %>  <% end %></td>
+				</tr>
+				<tr>
+					<th class="user_show_th"><h4>Address<font size="1"> <居住地></font></h4></th>
+					<td class="user_show_td"><%= @user.address %></td>
+				</tr>
+				<tr>
+					<th class="user_show_th"><h4>Goal<font size="1"> <目標></font></h4></th>
+					<td class="user_show_td"><%= @user.goal %></td>
+				</tr>
+				<tr>
+					<th class="user_show_th"><h4>Introduction<font size="1"> <自己紹介></font></h4></th>
+					<td class="user_show_td"><%= @user.introduction %></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+</div>
+
+<div class="title2">
+  <h2>STATUS</h2>
+  <p>ステータス</p>
+</div>
+
+<div class="status_box">
 <!-- チャート描画キャンバス -->
 <div><canvas id="myChart"></canvas></div>
 
@@ -38,7 +85,7 @@ var config = {
 		showTooltips: false,
 		legend: { position: 'bottom' },
 		title: {
-			display: true,
+			display: false,
 			fontSize:20,
 			fontColor:'#666',
 			text: 'ステータス'
@@ -71,3 +118,15 @@ var config = {
 var myRadar = new Chart($("#myChart"), config);
 
 </script>
+</div>
+
+<div class="user_box">
+	<% @team_member.each do |member| %>
+	<div class="member_container">
+        <%= link_to user_path(member.user.id) do %>
+        <%= attachment_image_tag member.user, :user_image, :fill, 100, 100, fallback: "no_image.jpg" ,size: '100x100',style: 'border-radius: 50%;' %><br>
+        <%= member.user.hundle_name %>
+        <% end %>
+   </div>
+   <% end %>
+</div>

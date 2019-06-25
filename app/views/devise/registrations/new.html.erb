@@ -1,49 +1,48 @@
-<h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<div class="title">
+  <h2 class="tx-center">SIGN UP</h2>
+  <p class="tx-center">新規会員登録</p>
+</div>
 
-  <div class="field">
-  <p>名前</p>
-  <%= f.text_field :name, required: true, style: "width:100%;",class: 'form-control' %>
+<div class="users_container">
+  <div class="container">
+      <div class="row">
+        <div class="col-xs-4 col-xs-offset-4">
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <b>名前</b>
+      <%= f.text_field :name, required: true, style: "width:100%;",class: 'form-control' %>
+
+      <b>フリガナ</b>
+      <%= f.text_field :ruby_name, required: true, style: "width:100%;",class: 'form-control' %>
+
+      <b>ハンドルネーム</b>
+      <%= f.text_field :hundle_name, required: true, style: "width:100%;",class: 'form-control' %>
+
+      <b>電話番号</b>
+      <%= f.text_field :phone, required: true, style: "width:100%;",class: 'form-control' %>
+
+      <b>メールアドレス</b>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", style: "width:100%;",class: 'form-control' %>
+
+      <b>パスワード</b>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password", style: "width:100%;",class: 'form-control' %>
+
+      <b>パスワード確認</b>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", style: "width:100%;",class: 'form-control' %>
+
+      <div class="action">
+        <%= f.submit "新規会員登録", class: "btn-gradient-radius" %>
+      </div>
+      <% end %>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-  <p>フリガナ</p>
-  <%= f.text_field :ruby_name, required: true, style: "width:100%;",class: 'form-control' %>
-  </div>
-
-  <div class="field">
-  <p>ハンドルネーム</p>
-  <%= f.text_field :hundle_name, required: true, style: "width:100%;",class: 'form-control' %>
-  </div>
-
-  <div class="field">
-  <p>電話番号</p>
-  <%= f.text_field :phone, required: true, style: "width:100%;",class: 'form-control' %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+</div>
 
 <%= render "devise/shared/links" %>
