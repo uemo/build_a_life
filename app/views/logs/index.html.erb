@@ -15,7 +15,7 @@
 
 <div class="user_info clearfix">
 	<div class="name_box">
-		<%= link_to '進捗を書き込む', new_note_path, class: 'btn-flat-bottom-border' %>
+		<%= link_to '進捗を書き込む', new_note_path, class: 'btn-square' %>
 	</div>
 	<div class="days_box">
 		<h2><font size="4">最大継続日数</font> / <%= @user.max_number_days %>日</h2>
@@ -30,7 +30,15 @@
 
 		  <% notes.each do |note| %>
 		    <div>
-		      <%= link_to note.result, note %>
+		    	<% if note.result == "達成" %>
+		    		<%= link_to note_path(note) do %>
+                  	<%= image_tag("goldstar.png", :size => "40x40") %>
+                  	<% end %>
+                <% else %>
+                  	<%= link_to note_path(note) do %>
+                  	<%= image_tag("bronzestar.png", :size => "40x40") %>
+                  	<% end %>
+                <% end %>
 		    </div>
 		  <% end %>
 	 <% end %>

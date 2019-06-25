@@ -51,7 +51,9 @@ class TeamsController < ApplicationController
   end
 
   def index
+    @user_team = UserTeam.where(user_id: current_user.id)
     @teams = Team.all
+    @tags = Tag.all
   end
 
   def destroy

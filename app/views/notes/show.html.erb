@@ -15,7 +15,11 @@
       <div class="image">
       <%= attachment_image_tag @note.work, :work_image, :fill, 100, 100, fallback: "no_image.jpg" ,size: '200x200' %>
          <div class="medal">
+          <% if @note.result == "達成" %>
           <%= image_tag("goldstar.png", :size => "50x50") %>
+          <% else %>
+          <%= image_tag("bronzestar.png", :size => "50x50") %>
+          <% end %>
          </div>
       </div>
     </div>

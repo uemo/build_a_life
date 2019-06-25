@@ -30,7 +30,7 @@ class NotesController < ApplicationController
        # 保存したレコードの日付とユーザーが前回作成した最新レコードの日付の差分を求める
        day = (Date.parse(note.start_time.to_s) - Date.parse(date_last.start_time.to_s)).to_i
        # 差分が1の場合number_daysカラムに値を1加える
-       if day == 1
+       if day == 1 && note.result == "達成"
           keep_day = user.number_days + 1
           user.update(number_days: keep_day)
        end
@@ -42,10 +42,12 @@ class NotesController < ApplicationController
        end
        # ここまで
 
+       # 継続日数が最大継続日数を超えた場合には、最大継続日数を更新する。
        if  user.number_days > user.max_number_days
            m_number_days = user.number_days
            user.update(max_number_days: m_number_days)
        end
+       # ここまで
 
 		   flash[:notice] = "今日の進捗を投稿しました！"
 		   redirect_to note_path(note)

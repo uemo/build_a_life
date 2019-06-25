@@ -10,10 +10,11 @@ before_action :authenticate_user!
     @user = User.find(params[:id])
     @user_team = UserTeam.where(user_id: params[:id])
 
-    @user_team.each do |user_team|
-    my_team = user_team.team_id
-    @user_teams = UserTeam.where(team_id: my_team)
-    end
+    @team_member = UserTeam.where(user_id: current_user.id)
+      @team_member.each do |member|
+      my_team = member.team_id
+      @user_teams = UserTeam.where(team_id: my_team)
+      end
     @team_member = @user_teams.all
 
   end
