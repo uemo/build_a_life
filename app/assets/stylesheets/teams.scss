@@ -80,7 +80,7 @@
 }
 
 .article_table{
-  margin-top:20px;
+  margin-top:0px;
 }
 
 .user_list {
@@ -128,4 +128,38 @@
   padding: 0.2em 0.5em;
   margin-top:10px;
   text-align:center;
+}
+
+.article_container_header{
+  border-bottom:1px solid black;
+}
+.article_container_header_left{
+  width:50%;
+  float:left;
+}
+
+.article_container_header_right{
+  width:50%;
+  float:left;
+}
+
+.name_box3 {
+  overflow: hidden;
+  text-align:right;
+}
+
+.btn-square2 {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  background: black;/*ボタン色*/
+  color: #FFF;
+  border-bottom: solid 4px #627295;
+  border-radius: 3px;
+}
+.btn-square2:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  border-bottom: none;/*線を消す*/
 }

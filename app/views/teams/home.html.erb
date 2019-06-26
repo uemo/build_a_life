@@ -58,15 +58,20 @@
     <div class="row">
     	<div class="col-xs-9">
             <div class="article_container">
-            <h3 class="border_b">Article<font size="2">  記事</font></h3>
+                <div class="article_container_header clearfix">
+                    <div class="article_container_header_left">
+                        <h3>Article<font size="2">  記事</font></h3>
+                    </div>
+                    <div class="article_container_header_right">
+                    </div>
+                </div>
             <table class="table article_table">
                 <thead>
                 <tr>
                     <th width="21%">投稿日時</th>
                     <th width="15%">ユーザー名</th>
                     <th width="50%">件名</th>
-                    <th width="7%">&nbsp;</th>
-                    <th width="7%">&nbsp;</th>
+                    <th colspan="2", padding:0;><%= link_to '新規投稿', new_team_article_path(@team), class: 'btn-square2'  %></th>
                 </tr>
                 </thead>
                 <% @team.articles.each do |t| %>
@@ -79,19 +84,21 @@
                         <%= link_to '詳細', team_article_path(t) %>
                     </td>
                     <td>
+                        <% if t.user.id == current_user.id %>
                         <%= link_to '削除', team_article_path(t), method: :delete, "data-confirm" => "削除しますか？" %>
+                        <% end %>
                     </td>
                 </tr>
                 </tbody>
                 <% end %>
             </table>
+            <%= paginate @articles %>
         </div>
         </div>
         <div class="col-xs-3">
             <h3 class="border_b">CHAT<font size="2">  チャット</font></h3>
             <p>Coming Soon..</p>
 		</div>
-            <%#= paginate @contacts %>
     </div>
 </div>
 </div>

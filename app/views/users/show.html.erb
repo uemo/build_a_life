@@ -6,7 +6,9 @@
     </div>
     <div class="title_right">
     	<div class="name_box2">
-    	<%= link_to '編集する', edit_user_path(@user), class: 'btn-square' %>
+    	    <% if @user.id == current_user.id %>
+    	    <%= link_to '編集する', edit_user_path(@user), class: 'btn-square' %>
+    	    <% end %>
         </div>
     </div>
 </div>

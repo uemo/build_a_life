@@ -19,10 +19,10 @@ class ArticlesController < ApplicationController
 		@article = Article.new(article_params)
 		if @article.save
 			flash[:notice] = "記事を投稿しました。"
-            redirect_to team_article_path(@article)
+            redirect_to teams_path
 		else
 			flash[:danger] = "記事の投稿に失敗しました。項目を記載してください。"
-            redirect_to "/teams/home/#{@team.id}"
+            redirect_to teams_path
 		end
 	end
 
