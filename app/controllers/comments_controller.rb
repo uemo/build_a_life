@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+	before_action :authenticate_user!
 
 	def create
 		@comment = Comment.new(comment_params)
@@ -17,7 +18,7 @@ class CommentsController < ApplicationController
 	  	    flash[:notice] = "コメントを投稿しました。"
 	        redirect_to note_path(@note)
 	    else
-	  	flash[:notice] = "コメントの投稿に失敗しました。もう一度内容を確認してください。"
+	  	flash[:danger] = "コメントの投稿に失敗しました。もう一度内容を確認してください。"
 	  	redirect_to note_path(@note)
 	    end
 	end
@@ -35,6 +36,7 @@ class CommentsController < ApplicationController
         # ここまで
 		flash[:notice] = "コメントを削除しました。"
         redirect_to note_path(@note)
+    end
     end
 
 	private

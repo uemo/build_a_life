@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
 before_action :authenticate_user!
-  # before_action :admin_user, except: [:show, :edit, :update, :destroy]
 
   def index
      @users = User.page(params[:page]).per(10).reverse_order
@@ -11,12 +10,19 @@ before_action :authenticate_user!
     @user_team = UserTeam.where(user_id: params[:id])
 
     @team_member = UserTeam.where(user_id: current_user.id)
+    @team_members = []
+
       @team_member.each do |member|
       my_team = member.team_id
       @user_teams = UserTeam.where(team_id: my_team)
-      end
-    @team_member = @user_teams.all
 
+          @user_teams.each do |user_team|
+          if @team_members.include?(user_team.user)
+          else @team_members.push(user_team.user)
+          end
+          end
+
+      end
   end
 
   def edit

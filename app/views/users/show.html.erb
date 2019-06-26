@@ -1,7 +1,14 @@
 
-<div class="title">
-  <h2>MEMBER</h2>
-  <p>メンバー</p>
+<div class="title clearfix">
+	<div class="title_left">
+        <h2>PROFILE</h2>
+        <p>プロフィール</p>
+    </div>
+    <div class="title_right">
+    	<div class="name_box2">
+    	<%= link_to '編集する', edit_user_path(@user), class: 'btn-square' %>
+        </div>
+    </div>
 </div>
 
 <div class="user_box">
@@ -121,12 +128,17 @@ var myRadar = new Chart($("#myChart"), config);
 </div>
 
 <div class="user_box">
-	<% @team_member.each do |member| %>
-	<div class="member_container">
-        <%= link_to user_path(member.user.id) do %>
-        <%= attachment_image_tag member.user, :user_image, :fill, 100, 100, fallback: "no_image.jpg" ,size: '100x100',style: 'border-radius: 50%;' %><br>
-        <%= member.user.hundle_name %>
-        <% end %>
-   </div>
-   <% end %>
+	<h3>MEMBER<font size="2">  メンバー</font></h3>
+		<div class="user_box2 clearfix">
+		<% @team_members.each do |member| %>
+			<div class="member_container">
+        	<%= link_to user_path(member.id) do %>
+        	<%= attachment_image_tag member, :user_image, :fill, 100, 100, fallback: "no_image.jpg" ,size: '80x80',style: 'border-radius: 50%;' %><br>
+        		<div class="text-center">
+        			<%= member.hundle_name %>
+        		</div>
+        		<% end %>
+   			</div>
+   		<% end %>
+		</div>
 </div>

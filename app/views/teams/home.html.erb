@@ -1,7 +1,42 @@
 
-<div class="title">
-  <h2>TEAM BOARD</h2>
-  <p>チーム交流板</p>
+<div class="title clearfix">
+      <div class="title_left">
+         <h2>TEAM BOARD</h2>
+         <p>チーム交流板</p>
+      </div>
+      <div class="title_right">
+         <div class="name_box2">
+         <%= link_to 'チーム編集', edit_team_path(@team), class: 'btn-square' %>
+         </div>
+      </div>
+</div>
+
+<div class="team_box">
+   <div class="container">
+       <div class="row">
+           <div class="col-xs-3">
+               <div class="image_team">
+                  <%= attachment_image_tag @team, :team_image, :fill, 100, 100, fallback: "no_image.jpg", class: 'img-responsive' %>
+               </div>
+            </div>
+            <div class="col-xs-9">
+                <table class="team_table">
+                    <tr>
+                        <th class="team_show_th"><h4>Team Name<font size="1"> <チーム名></font></h4></th>
+                        <td class="team_show_td"><%= @team.team_name %></td>
+                    </tr>
+                    <tr>
+                        <th class="team_show_th"><h4>Team Tag<font size="1"> <チームタグ></font></h4></th>
+                        <td class="team_show_td2"><% @tags.each do |tag| %><h5 class="tag_box"><%= tag.tag_name %></h5><% end %></td>
+                    </tr>
+                    <tr>
+                        <th class="team_show_th"><h4>Introduction<font size="1"> <チーム紹介></font></h4></th>
+                        <td class="team_show_td"><%= @team.team_body %></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="team_box">

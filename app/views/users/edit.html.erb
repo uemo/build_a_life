@@ -29,10 +29,9 @@
 				<%= f.text_area :goal, autofocus: true, style: "width:100%", class: 'form-group' %>
 			<b>自己紹介</b>
 				<%= f.text_area :introduction, autofocus: true, rows:'6', style: "width:100%", class: 'form-group' %>
-			<div class="field">
-               <b>画像選択</b>
+
+            <b>画像選択</b>
     　　　　　　<%= f.attachment_field :user_image %>
-  　　　　　 </div>
 			<%#
 			<h4><パスワード></h4>
 				<%= f.password_field :password, class: "col-xs-" %>

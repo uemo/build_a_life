@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  get 'teams/home/:id' => 'teams#home', as: 'home'
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  get 'teams/:id/home' => 'teams#home', as: 'home'
 
   devise_for :users
 

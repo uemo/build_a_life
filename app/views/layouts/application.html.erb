@@ -67,6 +67,19 @@
 
       </div>
     </header>
+    <div class="main">
+        <div class="sample">
+          <% if flash[:notice] %>
+            <div class="flash alert alert-info">
+              <%= flash[:notice] %>
+              <button type="button" class="close" data-dismiss="alert" aria-label="閉じる"><span aria-hidden="true">×</span></button>
+            </div>
+          <% elsif flash[:danger]%>
+            <div class="flash alert alert-warning">
+                <%= flash[:danger] %>
+                <button type="button" class="close" data-dismiss="alert" aria-label="閉じる"><span aria-hidden="true">×</span></button>
+            </div>
+          <% end %>
 
     <%= yield %>
 

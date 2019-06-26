@@ -23,6 +23,14 @@
 	margin: 0 auto;
 }
 
+.user_box2{
+  width:100%;
+  margin: 0 auto;
+  border:2px solid black;
+  min-height: 120px;
+  margin-bottom: 30px;
+}
+
 .image_user {
     padding-top:10px;
     margin: 0 auto;
@@ -75,9 +83,10 @@
 }
 
 .member_container {
-  width: 150px;
-  height: 200px;
+  width: 100px;
+  height: 120px;
   margin: 0 auto;
+  padding:10px;
   float: left;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -88,4 +97,20 @@
   margin-top:20px;
   margin-bottom:20px;
   height:300px;
+}
+
+.title_left {
+  width:50%;
+  float:left;
+}
+
+.title_right {
+  width:50%;
+  float:left;
+}
+
+.name_box2 {
+  margin-top:10px;
+  overflow: hidden;
+  text-align:right;
 }

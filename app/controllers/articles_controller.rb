@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+	before_action :authenticate_user!
 
     def new
         @article = Article.new
@@ -20,7 +21,7 @@ class ArticlesController < ApplicationController
 			flash[:notice] = "記事を投稿しました。"
             redirect_to team_article_path(@article)
 		else
-			flash[:notice] = "記事の投稿に失敗しました。項目を記載してください。"
+			flash[:danger] = "記事の投稿に失敗しました。項目を記載してください。"
             redirect_to "/teams/home/#{@team.id}"
 		end
 	end
@@ -31,7 +32,7 @@ class ArticlesController < ApplicationController
 			flash[:notice] = "記事を編集しました。"
             redeirect_to team_article_path(@article)
         else
-            flash[:notice] = "記事の更新に失敗しました。もう一度記載内容を確認してください。"
+            flash[:danger] = "記事の更新に失敗しました。もう一度記載内容を確認してください。"
             render :edit
         end
     end

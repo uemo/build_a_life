@@ -1,4 +1,6 @@
 class TeamsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_member, only: [:home]
 
   def new
     @team = Team.new
@@ -9,12 +11,11 @@ class TeamsController < ApplicationController
 
   def create
   	@team = Team.new(team_params)
-    # @team.user_id = current_user.id
     if @team.save
       flash[:notice] = "チームを作成しました。"
       redirect_to team_path(@team)
     else
-      flash[:notice] = "チームの作成に失敗しました。もう一度内容を確認してください。"
+      flash[:danger] = "チームの作成に失敗しました。もう一度内容を確認してください。"
       redirect_to new_team_path
     end
   end
@@ -30,7 +31,7 @@ class TeamsController < ApplicationController
        flash[:notice] = "チーム情報を更新しました。"
        redirect_to team_path(@team)
     else
-      flash[:notice] = "チーム情報の更新に失敗しました。もう一度登録内容を確認してください。"
+      flash[:danger] = "チーム情報の更新に失敗しました。もう一度登録内容を確認してください。"
       render :edit
     end
   end

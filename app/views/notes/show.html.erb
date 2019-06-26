@@ -48,7 +48,10 @@
     </div>
 
     </div>
+    <%# ノート投稿者のみ削除できる %>
+    <% if @note.user_id == current_user.id %>
     <%= link_to '削除', note_path(@note), method: :delete, data: { confirm: '記事を削除してもよろしいですか?' }, class: 'fr' %>
+    <% end %>
 
   </div>
 
@@ -65,6 +68,12 @@
         <td align="center"><%= comment.user.hundle_name %></td>
         <td width="10%"><%= comment.created_at.strftime('%Y/%m/%d') %></td>
         <td width="75%"><%= comment.comment_body %></td>
+        <td width="5%">
+          <%# コメント投稿者もしくは、ノートの投稿者のみ削除できる %>
+          <% if comment.user_id == current_user.id or @note.user_id == current_user.id %>
+          <%= link_to '削除', note_comment_path(comment), method: :delete %>
+          <% end %>
+        </td>
       </tr>
      <% end %>
     </table>
@@ -77,7 +86,6 @@
      <% end %>
   </div>
 
-  <%#<%= link_to 'Back', user_logs_path(current_user.id) %>
 
 
 

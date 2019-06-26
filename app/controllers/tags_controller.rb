@@ -1,4 +1,5 @@
 class TagsController < ApplicationController
+  before_action :authenticate_user!
 
   def index
   	@tags = Tag.all
@@ -11,7 +12,7 @@ class TagsController < ApplicationController
       flash[:notice] = "タグを作成しました。"
       redirect_to tags_path
     else
-      flash[:notice] = "タグの作成に失敗しました。入力内容を確認してください。"
+      flash[:danger] = "タグの作成に失敗しました。入力内容を確認してください。"
       redirect_to tags_path
     end
   end

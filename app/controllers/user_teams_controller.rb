@@ -1,19 +1,13 @@
 class UserTeamsController < ApplicationController
-
-	# def new
-	# 	@user_team = UserTeam.new
-	# 	@team = Team.find(params[:id])
- #        @user_teams = UserTeam.where(team_id: params[:id])
- #        @tags = Tag.where(team_id: params[:id])
-	# end
+    before_action :authenticate_user!
 
 	def create
 		@user_team = UserTeam.new(user_team_params)
 		 if @user_team.save
             flash[:notice] = "チームに参加しました。"
-            redirect_to root_path
+            redirect_to teams_path
          else
-            flash[:notice] = "チームに参加できませんでした。"
+            flash[:danger] = "チームに参加できませんでした。"
             redirect_to teams_path
          end
     end

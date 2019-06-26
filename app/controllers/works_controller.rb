@@ -18,7 +18,7 @@ class WorksController < ApplicationController
 			flash[:notice] = "タグを登録しました。"
 			redirect_to works_path
 		else
-			flash[:notice] = "タグの登録に失敗しました。"
+			flash[:danger] = "タグの登録に失敗しました。"
 			redirect_to new_work_path
 		end
 	end
@@ -29,7 +29,7 @@ class WorksController < ApplicationController
            flash[:notice] = 'タグを編集しました。'
            redirect_to works_path
         else
-           flash[:notice] = '必要項目を入力してください。'
+           flash[:danger] = '必要項目を入力してください。'
            render :edit
         end
     end

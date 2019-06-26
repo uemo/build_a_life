@@ -1,4 +1,5 @@
 class NotesController < ApplicationController
+  before_action :authenticate_user!
 
   def new
   	@note = Note.new
@@ -28,7 +29,11 @@ class NotesController < ApplicationController
 
        # 継続日数を計算する
        # 保存したレコードの日付とユーザーが前回作成した最新レコードの日付の差分を求める
+       if date_last.nil?
+          day = 1
+       else
        day = (Date.parse(note.start_time.to_s) - Date.parse(date_last.start_time.to_s)).to_i
+       end
        # 差分が1の場合number_daysカラムに値を1加える
        if day == 1 && note.result == "達成"
           keep_day = user.number_days + 1
@@ -52,7 +57,7 @@ class NotesController < ApplicationController
 		   flash[:notice] = "今日の進捗を投稿しました！"
 		   redirect_to note_path(note)
 	else
-		  flash[:notice] = "投稿内容に不備があります。もう一度記入してください。"
+		  flash[:danger] = "投稿内容に不備があります。もう一度記入してください。"
 	    redirect_to new_note_path
 	end
   end

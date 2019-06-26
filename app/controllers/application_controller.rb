@@ -5,6 +5,13 @@ class ApplicationController < ActionController::Base
     user_logs_path(user_id: current_user.id)
   end
 
+  def set_member
+  	   @set_members = UserTeam.where(team_id: params[:id]).exists?
+  	   if @set_members == false
+  	      redirect_to teams_path
+       end
+end
+
 
   protected
 
