@@ -22,7 +22,7 @@
         <div class="top_image clearfix">
           <%= image_tag("buildAlife.png", :size => "200x80") %>
         </div>
-
+        <!-- nav/サインイン済みユーザーの場合 -->
         <% if user_signed_in? %>
         <nav>
               <div class="header_link_item_box">
@@ -36,37 +36,33 @@
                     <%= link_to "▶Team", teams_path, class: 'nav_font' %>
                   </div>
                   <div class="header_link_item">
-                    <%= link_to "▶About", destroy_user_session_path, method: :delete, class: 'nav_font' %>
+                    <%= link_to "▶About", about_path, class: 'nav_font' %>
                   </div>
                     <div class="header_link_item">
                         <%= link_to "▶Logout", destroy_user_session_path, method: :delete, class: 'nav_font' %>
                     </div>
               </div>
         </nav>
+        <!-- nav/サインイン済みユーザー以外の場合 -->
         <% else %>
         <nav>
               <div class="header_link_item_box">
-                  <div class="header_link_item">
-                    <%= link_to "▶Home", new_user_session_path, class: 'nav_font' %>
+                  <div class="header_link_item2">
+                    <%= link_to "▶About", about_path, class: 'nav_font' %>
                   </div>
-                  <div class="header_link_item">
-                    <%= link_to "▶MyPage", new_user_session_path, class: 'nav_font' %>
+                  <div class="header_link_item2">
+                    <%= link_to "▶Sign up", new_user_registration_path, class: 'nav_font' %>
                   </div>
-                  <div class="header_link_item">
-                    <%= link_to "▶Team", new_user_session_path, class: 'nav_font' %>
+                  <div class="header_link_item2">
+                    <%= link_to "▶Log in", new_user_session_path, class: 'nav_font' %>
                   </div>
-                  <div class="header_link_item">
-                    <%= link_to "▶About", new_user_session_path, method: :delete, class: 'nav_font' %>
-                  </div>
-                    <div class="header_link_item">
-                        <%= link_to "▶Logout", new_user_session_path, method: :delete, class: 'nav_font' %>
-                    </div>
               </div>
         </nav>
         <% end %>
 
       </div>
     </header>
+    <!-- ここからフラッシュメッセージに関する記述 -->
     <div class="main">
         <div class="sample">
           <% if flash[:notice] %>

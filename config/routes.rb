@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'teams/:id/home' => 'teams#home', as: 'home'
+  get '/about' => 'static_pages#about'
 
   devise_for :users
 
