@@ -8,7 +8,9 @@
         <% @user_team.each do |user_team| %>
               <div class="team_container">
                   <%= link_to home_path(user_team.team.id) do %>
-                  <%= attachment_image_tag user_team.team, :team_image, :fill, 100, 100, fallback: "no_image.jpg" ,size: '100x100' %><br>
+                  <div class="team_container_image">
+                  <%= attachment_image_tag user_team.team, :team_image, :fill, 230, 230, fallback: "no_image.jpg" %><br>
+                  </div>
                   <% end %>
                   <div class="text-center">
                   <b><%= user_team.team.team_name %></b>
@@ -20,7 +22,7 @@
                   <% end %>
               </div>
         <% end %>
-      </div>
+</div>
 
 
 <div class="title clearfix">
@@ -39,7 +41,9 @@
         <% @teams.each do |team| %>
               <div class="team_container">
                   <%= link_to team_path(team.id) do %>
-                  <%= attachment_image_tag team, :team_image, :fill, 100, 100, fallback: "no_image.jpg" ,size: '100x100' %><br>
+                  <div class="team_container_image">
+                  <%= attachment_image_tag team, :team_image, :fill, 230, 230, fallback: "no_image.jpg" %><br>
+                  </div>
                   <% end %>
                   <div class="text-center">
                   <b><%= team.team_name %></b>

@@ -13,9 +13,10 @@ class UserTeamsController < ApplicationController
     end
 
     def destroy
-        @user_team = UserTeam.find(params[:id])
-        @user_team.destroy
-        flash[:notice] = "チームから脱退しました。。"
+        @team = Team.find(params[:id])
+        @user_team = UserTeam.where(team_id: @team.id).where(user_id: current_user.id)
+        @user_team.destroy_all
+        flash[:notice] = "チームから脱退しました。"
         redirect_to teams_path
     end
 

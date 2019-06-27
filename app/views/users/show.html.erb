@@ -18,7 +18,7 @@
 	<div class="row">
 		<div class="col-xs-4">
 			<div class="image_user">
-			<%= attachment_image_tag @user, :user_image, :fill, 100, 100, fallback: "no_image.jpg", size:'250x240',class: 'img-responsive' %>
+			<%= attachment_image_tag @user, :user_image, :fill, 250, 240, fallback: "no_image.jpg", size:'250x240',class: 'img-responsive' %>
 		    </div>
 		</div>
 		<div class="col-xs-8">
@@ -82,7 +82,7 @@ var config = {
 	data: {
 		labels: ["知識", "メンタル", "協調性", "社交性", "魅力"],
 		datasets: [{
-			label: false,
+			label: 'Status',
 			backgroundColor: color(colorSet.red).alpha(0.5).rgbString(),
 			borderColor: colorSet.red,
 			pointBackgroundColor: colorSet.red,
@@ -92,7 +92,7 @@ var config = {
 	options: {
 		animation:false,
 		showTooltips: false,
-		legend: { position: 'bottom' },
+		legend: { display: false, position: 'bottom' },
 		title: {
 			display: false,
 			fontSize:20,
@@ -130,7 +130,7 @@ var myRadar = new Chart($("#myChart"), config);
 </div>
 
 <div class="user_box">
-	<h3>MEMBER<font size="2">  メンバー</font></h3>
+	<h3>MEMBER'S STATUS</h3>
 		<div class="user_box2 clearfix">
 		<% @team_members.each do |member| %>
 			<div class="member_container">

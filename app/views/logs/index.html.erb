@@ -6,7 +6,7 @@
 
 <div class="user_info clearfix">
 	<div class="name_box">
-		<h2><%= @user.hundle_name %><font size="2">さん</font></h2>
+		<h2><%= @user.hundle_name %><font size="2">さん</font> / <%= @user.user_exp %>EXP<font size="2">(経験値)</font></h2>
 	</div>
 	<div class="days_box">
 		<h2><font size="4">継続日数</font> / <%= @user.number_days %>日  <font size="4">復帰回数</font> / <%= @user.number_return %>回</h2>
@@ -47,7 +47,7 @@
 </div>
 
 <div class="user_box">
-	<h3>MEMBER<font size="2">  メンバー</font></h3>
+	<h3>MEMBER'S PROGRESS</h3>
 		<div class="user_box2 clearfix">
 		<% @team_members.each do |member| %>
 			<div class="member_container">

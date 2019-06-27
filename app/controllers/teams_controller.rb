@@ -41,13 +41,14 @@ class TeamsController < ApplicationController
     @user_team = UserTeam.new
     @user_teams = UserTeam.where(team_id: params[:id])
     @tags = Tag.where(team_id: params[:id])
+    @set_member = UserTeam.where(team_id: params[:id]).where(user_id: current_user.id)
   end
 
   def home
     @team = Team.find(params[:id])
     @user_teams = UserTeam.where(team_id: params[:id])
     @tags = Tag.where(team_id: params[:id])
-    @articles = Article.page(params[:page]).per(5).reverse_order
+    @articles = @team.articles.page(params[:page]).per(5).reverse_order
     @article = Article.new
   end
 

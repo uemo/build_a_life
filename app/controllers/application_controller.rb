@@ -10,8 +10,8 @@ class ApplicationController < ActionController::Base
   end
 
   def set_member
-  	   @set_members = UserTeam.where(team_id: params[:id]).exists?
-  	   if @set_members == false
+  	   @set_members = UserTeam.where(team_id: params[:id]).where(user_id: current_user.id).count
+  	   if @set_members == 0
   	      redirect_to teams_path
        end
 end

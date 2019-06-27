@@ -9,7 +9,7 @@
 	   <div class="row">
 		   <div class="col-xs-3">
 			   <div class="image_team">
-			      <%= attachment_image_tag @team, :team_image, :fill, 100, 100, fallback: "no_image.jpg", class: 'img-responsive' %>
+			      <%= attachment_image_tag @team, :team_image, :fill, 230, 230, fallback: "no_image.jpg", class: 'img-responsive' %>
 		       </div>
 		    </div>
 		    <div class="col-xs-9">
@@ -38,7 +38,12 @@
 					</tr>
 					<tr>
 						<th class="team_show_th"></th>
-						<td class="team_show_td3"><%= button_to 'チームに参加する', user_teams_path(user_team: {user_id: current_user.id, team_id: @team.id}), method: :post, class: "btn-gradient-radius" %></td>
+						<td class="team_show_td3">
+							<% if @set_member.count == 0 %>
+							<%= button_to 'チームに参加する', user_teams_path(user_team: {user_id: current_user.id, team_id: @team.id}), method: :post, class: "btn-gradient-radius" %>
+							<% else %>
+							<%= button_to 'チームから脱退する', user_team_path(user_team: {team_id: @team.id}), method: :delete, class: "btn-gradient-radius" %>
+							<% end %></td>
 						<tr>
 				</table>
 		    </div>

@@ -1,17 +1,25 @@
-<p>新規記事投稿</p>
-<div class="container">
-    <div class="row">
-        <div class="col-xs-10 col-xs-offset-1">
-        	<h3>投稿フォーム</h3>
+
+<div class="title">
+  <h2 class="tx-center">NEW ARTICLE</h2>
+  <p class="tx-center">新規記事投稿</p>
+</div>
+
+<div class="users_container">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4 col-xs-offset-4">
         	<%= form_for [@team, @article] do |f| %>
         	    <%= f.hidden_field :user_id, :value => current_user.id %>
         	    <%= f.hidden_field :team_id, :value => @team.id %>
-                <p>件名</p>
-        	    <%= f.text_field :article_title, autofocus: true, required: true %><br>
-                <p>内容</p>
-        		<%= f.text_area :article_body, autofocus: true, required: true, :size=>"60x10" %><br>
-        		<%= f.submit "投稿", class: "btn btn-default" %>
+                <b>チーム名</b>
+        	    <%= f.text_field :article_title, required: true, style: "width:100%", class: 'form-group' %>
+                <b>内容</b>
+        		<%= f.text_area :article_body, required: true, style: "width:100%", rows:'10', class: 'form-group' %>
+                <div class="action2">
+                <%= f.submit "投稿", class: 'btn-gradient-radius' %>
+                </div>
         	<% end %>
     	</div>
 	</div>
+</div>
 </div>

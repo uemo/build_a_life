@@ -16,7 +16,7 @@
        <div class="row">
            <div class="col-xs-3">
                <div class="image_team">
-                  <%= attachment_image_tag @team, :team_image, :fill, 100, 100, fallback: "no_image.jpg", class: 'img-responsive' %>
+                  <%= attachment_image_tag @team, :team_image, :fill, 230, 230, fallback: "no_image.jpg", class: 'img-responsive' %>
                </div>
             </div>
             <div class="col-xs-9">
@@ -44,9 +44,9 @@
      <div class="user_list">
             <% @user_teams.each do |u| %>
             <div class="user_list_container">
+                <%= link_to user_path(u.user.id) do %>
                 <%= attachment_image_tag u.user, :user_image, :fill, 100, 100, fallback: "no_image.jpg" ,size: '80x80',style: 'border-radius: 50%;' %>
                 <div class="text-center">
-                <%= link_to user_path(u.user.id) do %>
                 <%= u.user.hundle_name %>
                 </div>
                 <% end %>
@@ -74,14 +74,14 @@
                     <th colspan="2", padding:0;><%= link_to '新規投稿', new_team_article_path(@team), class: 'btn-square2'  %></th>
                 </tr>
                 </thead>
-                <% @team.articles.each do |t| %>
+                <% @articles.each do |t| %>
                 <tbody>
                 <tr>
                     <td><%= t.created_at.strftime("%Y-%m-%d %H:%M") %></td>
                     <td><%= t.user.hundle_name %></td>
                     <td><%= t.article_title %></td>
                     <td>
-                        <%= link_to '詳細', team_article_path(t) %>
+                        <%= link_to '詳細', team_article_path(t.team_id, t.id) %>
                     </td>
                     <td>
                         <% if t.user.id == current_user.id %>
