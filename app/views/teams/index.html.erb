@@ -9,7 +9,7 @@
               <div class="team_container">
                   <%= link_to home_path(user_team.team.id) do %>
                   <div class="team_container_image">
-                  <%= attachment_image_tag user_team.team, :team_image, :fill, 230, 230, fallback: "no_image.jpg" %><br>
+                  <%= attachment_image_tag user_team.team, :team_image, :fill, 230, 230, fallback: "/images/no_image.jpg" %><br>
                   </div>
                   <% end %>
                   <div class="text-center">
@@ -42,7 +42,7 @@
               <div class="team_container">
                   <%= link_to team_path(team.id) do %>
                   <div class="team_container_image">
-                  <%= attachment_image_tag team, :team_image, :fill, 230, 230, fallback: "no_image.jpg" %><br>
+                  <%= attachment_image_tag team, :team_image, :fill, 230, 230, fallback: "/images/no_image.jpg" %><br>
                   </div>
                   <% end %>
                   <div class="text-center">

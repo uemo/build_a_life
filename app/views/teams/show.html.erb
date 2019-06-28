@@ -9,7 +9,7 @@
 	   <div class="row">
 		   <div class="col-xs-3">
 			   <div class="image_team">
-			      <%= attachment_image_tag @team, :team_image, :fill, 230, 230, fallback: "no_image.jpg", class: 'img-responsive' %>
+			      <%= attachment_image_tag @team, :team_image, :fill, 230, 230, fallback: "/images/no_image.jpg", class: 'img-responsive' %>
 		       </div>
 		    </div>
 		    <div class="col-xs-9">
@@ -31,7 +31,7 @@
 						<td class="team_show_td">
 							<% @user_teams.each do |u| %>
 							<%= link_to user_path(u.user.id) do %>
-							<%= attachment_image_tag u.user, :user_image, :fill, 100, 100, fallback: "no_image.jpg", size:'80x80',style: 'border-radius: 50%;'%>
+							<%= attachment_image_tag u.user, :user_image, :fill, 100, 100, fallback: "/images/no_image.jpg", size:'80x80',style: 'border-radius: 50%;'%>
 							<% end %>
 							<% end %>
 						</td>
