@@ -1,24 +1,53 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# buildAlife
 
-Things you may want to cover:
+<br>目標に対して日々の進捗を記録し、チームメンバーと共有することができます。
+<br>本アプリの特徴として、日々のモチベーションを保てるようにするべく下記機能を搭載してます。  
+<br>1.  ユーザーにステータス(知識、魅力、社交性、協調性、メンタル)が設定されており、ユーザーの行動内容で各パラメータが変動、ゲーム感覚でユーザーの進捗、成果を確認することができる。  
+<br>2.  "連続した記録を途切れさせたくない"という心理を利用し、継続日数、最大継続日数、復帰回数をカウントする。  
+<br>3.  チームに加入することで、同じ目標を持つメンバーと毎日の進捗や、目標に対しての知識を共有できる。また、進捗を他人に公開することで目標から逃避し辛い環境を構築できる。
 
-* Ruby version
+# バージョン
+<br>Ruby '2.5.5'
+<br>Rails '5.2.3'
 
-* System dependencies
+# Gem
+```
+"devise" #ログイン機能実装用
+```
+```
+"simple_calendar", "~> 2.0" #カレンダー機能実装用
+```
+```
+"refile" 
+"refile-mini_magick"  #画像投稿機能実装用
+```
+```
+"cocoon"  #ネストフォーム実装用
+```
+```
+"jquery-rails"  #jquery
+```
+```
+"bootstrap-sass', '~> 3.3.6"  #bootstrap
+```
+```
+"rails_admin', '~> 1.3"  #管理者実装用
+```
+```
+"cancancan', '~> 2.0"  #管理者ページアクセス制限用
+```
+```
+"kaminari" 
+"kaminari-bootstrap', '~> 3.0.1" #ページネーション実装用
+```
+# デプロイ
+・Webサーバ  
+ `AWS EC2 Apache(Passenger)`
 
-* Configuration
+・データベース(本番環境用)  
+`MySQL`
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# 作者
+[@uemo](https://github.com/uemo) mail to: uetti.tu@gmail.com
